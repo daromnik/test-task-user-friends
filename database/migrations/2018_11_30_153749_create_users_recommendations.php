@@ -15,10 +15,11 @@ class CreateUsersRecommendations extends Migration
     {
         Schema::create('users_recommendations', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
-            $table->integer('recommendation_id')->unsigned();
+            $table->integer('recommend_id')->unsigned();
+            $table->integer('rate')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->foreign('recommendation_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('recommend_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 
