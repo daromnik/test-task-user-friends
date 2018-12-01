@@ -28,8 +28,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-//    public function friends()
-//    {
-//        return $this->belongsToMany('App\User', 'users_friends', 'user_id', 'friend_id');
-//    }
+    /**
+     * Список друзей пользователя
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function friends()
+    {
+        return $this->belongsToMany('App\User', 'users_friends', 'user_id', 'friend_id');
+    }
+
+    /**
+     * Список рекомендованных друзей пользователя
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function recommends()
+    {
+        return $this->belongsToMany('App\User', 'users_recommendations', 'user_id', 'recommend_id');
+    }
 }
