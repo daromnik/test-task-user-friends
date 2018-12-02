@@ -34,7 +34,7 @@
                     <div class="col-6">
                         <h5>Рекомендованные Друзья</h5>
                         <ul>
-                            @forelse ($user->recommends as $recommends)
+                            @forelse ($user->recommends()->orderBy('rate', 'DESC')->get() as $recommends)
                                 <li>{{ $recommends->id }} | {{ $recommends->name }}</li>
                             @empty
                                 <p>Нет рекомендованных друзей,<br>потому что нет общих друзей у друзей :)</p>
